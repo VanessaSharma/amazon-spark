@@ -28,7 +28,7 @@ An online bookstore
 ![database diagram](database.png)
 
 #### Technical Specifications:
- | Behavior                                       | Input                                              | Output                                             |
+| Behavior                                       | Input                                              | Output                                             |
 |------------------------------------------------|----------------------------------------------------|----------------------------------------------------|
 | Store category name                            | fantansy                                           | fantansy                                           |
 | Assign an id to category                       | 1                                                  | 1                                                  |
