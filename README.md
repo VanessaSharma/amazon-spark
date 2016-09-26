@@ -28,7 +28,28 @@ An online bookstore
 ![database diagram](database.png)
 
 #### Technical Specifications:
-( add chart, make table at - http://www.tablesgenerator.com/markdown_tables )
+ | Behavior                                       | Input                                              | Output                                             |
+|------------------------------------------------|----------------------------------------------------|----------------------------------------------------|
+| Store category name                            | fantansy                                           | fantansy                                           |
+| Assign an id to category                       | 1                                                  | 1                                                  |
+| Get name of product                            | My Little Dragon                                   | My Little Dragon                                   |
+| Get description of product                     | A fantastic story about a little dragon in Narnia. | A fantastic story about a little dragon in Narnia. |
+| Assign a category id                           | 1                                                  | 1                                                  |
+| Get product cost                               | 2                                                  | 2                                                  |
+| Get product price                              | (equals costs) 2                                   | (cost * 2) 4                                       |
+| Get sale date                                  | 09/26/2016                                         | 09/26/2016                                         |
+| Assign a customer id                           | 1                                                  | 1                                                  |
+| Assign a product id                            | 1                                                  | 1                                                  |
+| Get customer first name                        | Jane                                               | Jane                                               |
+| Get customer last name                         | Austin                                             | Austin                                             |
+| Get customer address                           | 123 Fantasy Lane                                   | 123 Fantasy Lane                                   |
+| Get customer city                              | Portland                                           |  Portland                                          |
+| Get customer state                             | Oregon                                             | Oregon                                             |
+| Get customer zip                               | 97255                                              | 97255                                              |
+| Get customer phone number                      | 760-457-7306                                       | 760-457-7306                                       |
+| Get customer email                             | janeaustin@hotmail.com                             | janeaustin@hotmail.com                             |
+| Get all sales for date range                   | 30 days                                            | list of sales in past 30 days                      |
+| Get list of sales for customers for date range | 30 days                                            | list of sales in past 30 days                      |
 
 
 ## Setup/Installation
