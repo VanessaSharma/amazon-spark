@@ -1,7 +1,7 @@
 import org.sql2o.*;
 import java.util.List;
 
-public class Product {
+public abstract class Product {
   public String name;
   public String description;
   public int categoryId;
@@ -9,14 +9,6 @@ public class Product {
   public float cost;
   public int id;
 
-  public Product(String name, String description, int categoryId, float cost){
-    this.name = name;
-    this.description = description;
-    this.categoryId = categoryId;
-    this.cost = cost;
-    this.price = cost *2;
-    this.save();
-}
   public String getName() {
     return name;
   }
@@ -32,6 +24,9 @@ public class Product {
   public float getPrice() {
     return price;
   }
+  public int getId() {
+    return id;
+  }
   public static List<Product> all() {
     String sql = "SELECT * FROM products";
     try(Connection cn = DB.sql2o.open()) {
@@ -39,26 +34,13 @@ public class Product {
     }
   }
 
-  public static List<Product> allByCategory(int id) {
-    String sql = "SELECT * FROM products WHERE categoryId=:id";
-    try(Connection cn = DB.sql2o.open()) {
-      return cn.createQuery(sql)
-      .addParameter("id", id)
-      .executeAndFetch(Product.class);
-    }
-  }
-
-  public void save() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO products (name, description, categoryId, price, cost) VALUES (:name, :description, :categoryId, :price, :cost)";
-      this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", this.name)
-        .addParameter("description", this.description)
-        .addParameter("categoryId", this.categoryId)
-        .addParameter("price", this.price)
-        .addParameter("cost", this.cost)
-        .executeUpdate()
-        .getKey();
+  @Override
+  public boolean equals(Object otherProduct) {
+    if(!(otherProduct instanceof Product)) {
+      return false;
+    } else{
+      Product newProduct = (Product) otherProduct;
+      return this.getName().equals(newProduct.getName()) && this.getDescription().equals(newProduct.getDescription()) && this.getId() == newProduct.getId();
     }
   }
 

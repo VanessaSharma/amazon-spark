@@ -2,17 +2,18 @@ import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class SalesTest {
-  private Sales sales = new Sales(1, 1);
+public class SaleTest {
+  private Sale sale;
 
   @Before
   public void setUp() {
     DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/bookstore_test", null, null);
+    sale = new Sale(1, 1, 1 ,1);
   }
 
   @Test
   public void Sales_instantiates_true() {
-    assertEquals(true, sales instanceof Sales);
+    assertEquals(true, sale instanceof Sale);
   }
 
   @After

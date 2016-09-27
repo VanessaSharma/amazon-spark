@@ -36,19 +36,43 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/books", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("categoryId", Integer.parseInt(request.params(":id")));
+      model.put("products", Book.all());
+      model.put("template", "templates/product.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/chocolates", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("categoryId", Integer.parseInt(request.params(":id")));
+      model.put("products", Chocolate.all());
+      model.put("template", "templates/product.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/wines", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("categoryId", Integer.parseInt(request.params(":id")));
+      model.put("products", Wine.all());
+      model.put("template", "templates/product.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/products/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("categoryId", Integer.parseInt(request.params(":id")));
-      model.put("products", Product.allByCategory(Integer.parseInt(request.params(":id"))));
+      model.put("products", Book.allByCategory(Integer.parseInt(request.params(":id"))));
       model.put("template", "templates/product.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     post("/products/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      Product product = new Product(request.queryParams("name"),request.queryParams("description"), Integer.parseInt(request.params(":id")), Float.parseFloat(request.queryParams("cost")));
+      Book book = new Book(request.queryParams("name"),request.queryParams("description"), Integer.parseInt(request.params(":id")), Float.parseFloat(request.queryParams("cost")),"James Patterson", "122342342424", 300, "Thriller");
       model.put("categoryId", Integer.parseInt(request.params(":id")));
-      model.put("products", Product.allByCategory(Integer.parseInt(request.params(":id"))));
+      model.put("products", Book.allByCategory(Integer.parseInt(request.params(":id"))));
       model.put("template", "templates/product.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());

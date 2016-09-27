@@ -83,7 +83,7 @@ public class Customer {
       String sql = "UPDATE customers SET phonenumber = :phonenumber WHERE id = :id";
       cn.createQuery(sql)
         .addParameter("phonenumber", phone)
-        .addParameter("id", id)
+        .addParameter("id", id)    
         .executeUpdate();
     }
   }
