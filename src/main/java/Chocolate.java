@@ -2,9 +2,12 @@ import org.sql2o.*;
 import java.util.List;
 
 public class Chocolate extends Product {
-  public String type;
-  public int count;
-  public String brand;
+  private int typeId;
+  private String type;
+  private String brand;
+  private String details;
+  private int count;
+
 
   public Chocolate(String name, String description, int categoryId, float cost, String type, int count, String brand){
     this.name = name;
@@ -17,6 +20,7 @@ public class Chocolate extends Product {
     this.count = count;
     this.brand = brand;
 }
+
 public static Chocolate find(int id) {
   try(Connection cn = DB.sql2o.open()) {
     String sql = "SELECT * FROM products WHERE id=:id";

@@ -38,7 +38,6 @@ public class App {
 
     get("/books", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("categoryId", Integer.parseInt(request.params(":id")));
       model.put("products", Book.all());
       model.put("template", "templates/product.vtl");
       return new ModelAndView(model, layout);
@@ -46,7 +45,6 @@ public class App {
 
     get("/chocolates", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("categoryId", Integer.parseInt(request.params(":id")));
       model.put("products", Chocolate.all());
       model.put("template", "templates/product.vtl");
       return new ModelAndView(model, layout);
@@ -54,7 +52,6 @@ public class App {
 
     get("/wines", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("categoryId", Integer.parseInt(request.params(":id")));
       model.put("products", Wine.all());
       model.put("template", "templates/product.vtl");
       return new ModelAndView(model, layout);
